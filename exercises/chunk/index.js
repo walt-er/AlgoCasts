@@ -11,9 +11,30 @@
 function chunk(array, size) {
     const arr = [];
 
-    for (let i = 0; i < array.length; i++) {
-        const subarray = Math.floor(i / size);
-        arr[subarray] = (!arr[subarray]) ? [array[i]] : [...arr[subarray], array[i]];
+    // for (let i = 0; i < array.length; i++) {
+    //     const subarray = Math.floor(i / size);
+    //     arr[subarray] = (!arr[subarray]) ? [array[i]] : [...arr[subarray], array[i]];
+    // }
+
+    // // or
+
+    // for (let element of array) {
+    //     const last = arr[arr.length - 1];
+
+    //     if (!last || last.length == size) {
+    //         arr.push([element]);
+    //     } else {
+    //         last.push(element);
+    //     }
+    // }
+
+    // // or
+
+    let index = 0;
+
+    while (index < array.length) {
+        arr.push(array.slice(index, index + size));
+        index = index + size;
     }
 
     return arr;
